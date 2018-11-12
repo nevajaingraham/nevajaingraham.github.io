@@ -36,10 +36,13 @@
 
         // example:
         platform.create(600, 200, .25, .75);
-        platform.create(275, 300, .20, .75);
+        platform.create(365, 250, .75, .75);
         platform.create(75, 200, .15, .05);
-        platform.create(600, 450, .20, .5);
-        
+        platform.create(175, 600, .25, .75);
+        platform.create(350, 520, .75, .05);
+        platform.create(475, 425, .25, .75);
+        platform.create(230, 350, .75, .75);
+        platform.create(175, 230, .25, .75);
         // ALL YOUR CODE GOES ABOVE HERE ///////////////////////////////////////
         ////////////////////////////////////////////////////////////////////////
     };
