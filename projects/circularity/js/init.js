@@ -25,23 +25,21 @@ var init = function (window) {
 
         // TODO 2 : Create a function that draws a circle  //
         var drawCircle = function() {
+            var drawCircle;
              circle = draw.randomCircleInArea(canvas, true, true, '#999', 2);
              physikz.addRandomVelocity(circle, canvas);
              view.addChild(circle);
-            circles.push(circle);
+             circles.push(circle);
 }
         
 
         // TODO 3 : Call the drawCircle function 5 times //
-        drawCircle()
-        drawCircle()
-        drawCircle()
-        drawCircle()
-        drawCircle()
+       
 
         // TODO 7 : Create a Loop to call drawCircle 100 times
-
-    
+    for(var i = 0; i < 600; i++){
+        drawCircle();
+    }
         view.addChild(fps);
         app.addUpdateable(fps);
     
@@ -62,7 +60,7 @@ var init = function (window) {
                 circle.y = canvas.height + circle.radius
             }
             // TODO 5c) if the circle has gone out of the bottom side of the screen then place it off-screen top 
-            else if ( circle.y > canvas.height - circle.radius ) {
+            else if ( circle.y > canvas.height + circle.radius ) {
                 circle.y = 0 - circle.radius        
             }
             // YOUR TODO 5 CODE ENDS HERE //////////////////////////
@@ -77,14 +75,15 @@ var init = function (window) {
             physikz.updatePosition(circles[4]);
             // TODO 6 : Call checkCircleBounds on your circles.
           
-           runner.checkCircleBounds(circles[0]);
-           runner.checkCircleBounds(circles[1]);
-           runner.checkCircleBounds(circles[2]);
-           runner.checkCircleBounds(circles[3]);
-           runner.checkCircleBounds(circles[4]);
+          
 
             // TODO 8 : Iterate over the array
-           
+           for(var i = 0; i < circles.length; i++){
+               var circle = circles[i];
+               physikz.updatePosition(circle);
+               runner.checkCircleBounds(circle);
+            
+           }
 
         }
         
