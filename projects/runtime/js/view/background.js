@@ -4,7 +4,7 @@ var background = function (window) {
     window.opspark = window.opspark || {};
     var draw = window.opspark.draw;
     var createjs = window.createjs;
-    
+    var tree;
     /*
      * Create a background view for our game application
      */
@@ -28,27 +28,44 @@ var background = function (window) {
             var canvasWidth = app.canvas.width;
             var canvasHeight = app.canvas.height;
             var groundY = ground.y;
-
             background.removeAllChildren();
 
             // this fills the background with a obnoxious yellow
             // you should modify this to suit your game
-            var backgroundFill = draw.rect(canvasWidth,canvasHeight,'yellow');
+            var backgroundFill = draw.rect(canvasWidth,ground.y,'red');
             background.addChild(backgroundFill);
             
             // TODO: 3 - Add a moon and starfield
-            
-            
+            var circle;
+for(var i=0;i<100;i++) {
+    circle = draw.circle(10,'white','LightGray',2);
+    circle.x = canvasWidth*Math.random();
+    circle.y = groundY*Math.random();
+    background.addChild(circle);
+}
+            var moon = draw.bitmap('img/moon.png');
+moon.x = 300;
+moon.y = 25;
+moon.scaleX = 0.2;
+moon.scaleY = 0.2;
+background.addChild(moon);
             // TODO: 5 - Add buildings!     Q: This is before TODO 4 for a reason! Why?
             
             
             // TODO 4: Part 1 - Add a tree
-            
+            tree = draw.bitmap('img/tree.png');
+tree.x = 700;
+tree.y = 150;
+background.addChild(tree);
         }
         
         // Perform background animation
         // called on each timer "tick" - 60 times per second
         function update() {
+            tree.x = tree.x + 1;
+            if(tree.x < -200) {
+            tree.x = canvasWidth;
+}
             // useful variables
             var canvasWidth = app.canvas.width;
             var canvasHeight = app.canvas.height;
