@@ -4,7 +4,8 @@ var background = function (window) {
     window.opspark = window.opspark || {};
     var draw = window.opspark.draw;
     var createjs = window.createjs;
-    var tree;
+   
+   
     /*
      * Create a background view for our game application
      */
@@ -18,18 +19,22 @@ var background = function (window) {
 
         // container which will be returned
         var background;
+        var tree;
+    var buildings = [];
         
         // Add any variables that will be used by render AND update here:
         
         // add objects for display inb ackground
         // called at the start of game and whenever the page is resized
         function render() {
+            
+            
             // useful variables
             var canvasWidth = app.canvas.width;
             var canvasHeight = app.canvas.height;
             var groundY = ground.y;
             background.removeAllChildren();
-
+            
             // this fills the background with a obnoxious yellow
             // you should modify this to suit your game
             var backgroundFill = draw.rect(canvasWidth,ground.y,'red');
@@ -57,25 +62,47 @@ background.addChild(moon);
 tree.x = 700;
 tree.y = 150;
 background.addChild(tree);
+var buildingHeight = 300;
+var building;
+for(var i=0;i<5;++i) {
+    building = draw.rect(75,buildingHeight,'LightGray','Black',1);
+    building.x = 200*i;
+    building.y = groundY-buildingHeight;
+    background.addChild(building);
+    buildings.push(building);
+}
+    console.log(buildings);
+    
+
+
         }
         
         // Perform background animation
         // called on each timer "tick" - 60 times per second
         function update() {
-            tree.x = tree.x + 1;
-            if(tree.x < -200) {
-            tree.x = canvasWidth;
-}
+         
+         
+
             // useful variables
             var canvasWidth = app.canvas.width;
             var canvasHeight = app.canvas.height;
             var groundY = ground.y;
             
             // TODO 4: Part 2 - Move the tree!
-            
+            tree.x = tree.x - 1;
+            if(tree.x < -200) {
+            tree.x = canvasWidth;
+            }
             
             // TODO 5: Part 2 - Parallax
-            
+          
+            for(var i=0; i<buildings.length; i++){
+            buildings[i].x = buildings[i].x -3;
+            if (buildings[i].x < -200) {
+            buildings[i].x = canvasWidth;
+            }
+            }
+           
 
         }
 
