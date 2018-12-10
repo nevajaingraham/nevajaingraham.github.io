@@ -56,26 +56,27 @@ moon.scaleY = 0.2;
 background.addChild(moon);
             // TODO: 5 - Add buildings!     Q: This is before TODO 4 for a reason! Why?
             
-            
+            var buildingHeight = 300;
+            var building;
+            for(var i=0;i<5;++i) {
+             building = draw.rect(75,buildingHeight,'LightGray','Black',1);
+            building.x = 200*i;
+             building.y = groundY-buildingHeight;
+             background.addChild(building);
+                buildings.push(building);
+}
             // TODO 4: Part 1 - Add a tree
             tree = draw.bitmap('img/tree.png');
-tree.x = 700;
-tree.y = 150;
-background.addChild(tree);
-var buildingHeight = 300;
-var building;
-for(var i=0;i<5;++i) {
-    building = draw.rect(75,buildingHeight,'LightGray','Black',1);
-    building.x = 200*i;
-    building.y = groundY-buildingHeight;
-    background.addChild(building);
-    buildings.push(building);
-}
-    console.log(buildings);
+        tree.x = 700;
+        tree.y = 150;
+        background.addChild(tree);
+
+        }
+    
     
 
 
-        }
+        
         
         // Perform background animation
         // called on each timer "tick" - 60 times per second
